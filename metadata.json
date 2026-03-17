@@ -1,0 +1,5 @@
+{
+  "name": "AI 英语单词大闯关",
+  "description": "结合 Gemini AI 的三年级英语单词学习应用，包含智能发音、AI 图像生成、音节拆分和趣味知识，支持 IndexedDB 缓存。",
+  "requestFramePermissions": []
+}
