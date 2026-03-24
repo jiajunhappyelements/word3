@@ -26,6 +26,9 @@ export default function GameTab() {
 
   // Initialize and shuffle
   const initGame = useCallback(() => {
+    // Only use bold words for the spelling game
+    const boldWords = allWords.filter(w => w.isBold);
+
     let filtered: WordObj[] = [];
     if (unit === 'mistakes') {
       const mistakes = getStoredMistakes();
@@ -34,11 +37,11 @@ export default function GameTab() {
         setUnit('all');
         return;
       }
-      filtered = allWords.filter((w) => mistakes.includes(w.word));
+      filtered = boldWords.filter((w) => mistakes.includes(w.word));
     } else if (unit === 'all') {
-      filtered = [...allWords];
+      filtered = [...boldWords];
     } else {
-      filtered = allWords.filter((w) => w.unit === unit);
+      filtered = boldWords.filter((w) => w.unit === unit);
     }
 
     // Shuffle
