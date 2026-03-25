@@ -16,7 +16,7 @@ export async function POST(request: Request) {
     const ai = new GoogleGenAI({ apiKey });
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash-preview-tts',
-      contents: [{ parts: [{ text: `Please say the word clearly and slowly: ${word}. And the word is ${word}.` }] }],
+      contents: [{ parts: [{ text: `Please say the word clearly and slowly: ${word}.` }] }],
       config: {
         responseModalities: [Modality.AUDIO],
         speechConfig: {
