@@ -3,7 +3,7 @@ import { GoogleGenAI, Modality } from '@google/genai';
 
 export async function POST(request: Request) {
   try {
-    const { word } = await request.json();
+    let { word } = await request.json();
     if (!word) {
       return NextResponse.json({ error: 'Missing word' }, { status: 400 });
     }
@@ -11,6 +11,10 @@ export async function POST(request: Request) {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       return NextResponse.json({ error: 'GEMINI_API_KEY is not set on the server' }, { status: 500 });
+    }
+
+    if (word === 'eye') {
+      word = 'I'
     }
 
     const ai = new GoogleGenAI({ apiKey });
